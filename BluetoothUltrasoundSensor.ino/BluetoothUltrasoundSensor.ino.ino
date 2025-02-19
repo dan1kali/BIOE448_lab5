@@ -6,8 +6,7 @@ BLEByteCharacteristic writeChar("2A58", BLEWrite);
 
 const int trigPin = 8;
 const int echoPin = 10;
-/* const int greenLED = 2;
-const int redLED = 3; */
+
 long duration;
 int distanceCm, distanceInch;
 
@@ -31,18 +30,15 @@ void setup() {
   BLE.advertise();
   Serial.println("Bluetooth device active");
 
-
-
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
-/*   pinMode(greenLED, OUTPUT);
-  pinMode(redLED, OUTPUT); */
+
   Serial.begin(9600);
 
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
   digitalWrite(trigPin, HIGH);
@@ -60,12 +56,7 @@ void loop() {
   Serial.println(" in");
   delay(1000);
 
-  /* if (distanceCm < 15) {
-    digitalWrite(greenLED, HIGH);
-    digitalWrite(redLED, LOW);
-  } else {
-    digitalWrite(greenLED, LOW);
-    digitalWrite(redLED, HIGH);
-  } */
+
+  readChar.writeValue(distanceCm);
   
 }
