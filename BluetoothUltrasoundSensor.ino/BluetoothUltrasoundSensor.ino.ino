@@ -69,11 +69,16 @@ void loop() {
         Serial.println(" in");
         delay(1000);
         
-        readChar.writeValue(distanceCm);
-        Serial.println("Distance printed to peripheral");
+        if (writeChar.written()) {
+          if (writeChar.value()) {
+
+          readChar.writeValue(distanceCm);
+          Serial.println("Distance printed to peripheral");
+            
+          }
+        }
+
       }
     }
-
   }
-
 }
